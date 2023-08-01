@@ -2,6 +2,8 @@
 <?php
 session_start();
 
+include_once 'function.php';
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Retrieve form data
     $username = $_POST["username"];
@@ -28,13 +30,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION["id"] = $user["id"];
             $_SESSION["username"] = $user["username"];
             $_SESSION["nama_user"] = $user["nama_user"];
-            // $_SESSION["foto"] = $user["foto"];
+            $_SESSION["departemen"] = $user["departemen"];
+            $_SESSION["foto"] = $user["foto"];
+            $_SESSION["ket"] = $user["ket"];
+            $_SESSION["role"] = $user["role"];
 
             // Determine user role and redirect accordingly
             if ($user["role"] == "admin") {
-                header("Location: admin_dashboard.php");
+                header("Location: ../view/admin_dashboard.php");
             } else {
-                header("Location: user_dashboard.php");
+                header("Location: ../view/user_dashboard.php");
             }
             exit();
         } else {
@@ -43,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     } else {
         // User does not exist
-        echo "User not found.";
+        header("Location: ../index.php?error=user_not_found");
     }
 
     $stmt->close();

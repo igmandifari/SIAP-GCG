@@ -8,7 +8,7 @@
 
 <body>
     <h2>Register</h2>
-    <form action="../config/register_proses.php" method="post" enctype="multipart/form-data">
+    <form action="../config/register_proses.php" method="post">
         <label for="username">Username:</label>
         <input type="text" name="username" required>
         <br>
@@ -29,6 +29,7 @@
         <br>
         <label for="role">Role:</label>
         <select name="role">
+            <option value="admin">Admin</option>
             <option value="user">User</option>
         </select>
         <br>
