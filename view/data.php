@@ -2,7 +2,7 @@
 session_start();
 
 // Check if the user is logged in as an admin
-if (isset($_SESSION["role"]) && $_SESSION["role"] == "admin") {
+if (isset($_SESSION["role"]) && $_SESSION["role"] == "user") {
     $username = $_SESSION["username"];
     $nama_user = $_SESSION["nama_user"];
     $departemen = $_SESSION["departemen"];
@@ -17,10 +17,10 @@ if (isset($_SESSION["role"]) && $_SESSION["role"] == "admin") {
 $userRole = $_SESSION["role"];
 function getDashboardURL($userRole)
 {
-    if ($userRole === "admin") {
-        return "admin_dashboard.php";
-    } else if ($userRole === "user") {
+    if ($userRole === "user") {
         return "user_dashboard.php";
+    } else if ($userRole === "admin") {
+        return "admin_dashboard.php";
     } else {
         // Default to a generic dashboard if the role is neither "admin" nor "user"
         return "../index.php";
@@ -35,7 +35,7 @@ function getDashboardURL($userRole)
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Responsive Admin Dashboard</title>
+    <title>Data</title>
     <!-- ======= Styles ====== -->
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
@@ -50,43 +50,6 @@ function getDashboardURL($userRole)
                 <ion-icon name="menu-outline"></ion-icon>
             </div>
         </div>
-        <!-- ======================= Cards ================== -->
-        <p><a href="../config/logout.php" class="btn btn-success">Logout</a></p>
-        <div class="cardBox">
-            <div class="card">
-                <div class="iconBx">
-                    <img src="<?php echo $foto; ?>" alt="foto">
-                </div>
-            </div>
-
-            <div class="card">
-                <div>
-                    <p>Selamat Datang, </p>
-                    <p><b>Department <?php echo $departemen; ?>, </b></p>
-
-                    <p><?php echo $nama_user; ?></p>
-                    <p><?php echo $ket; ?></p>
-                </div>
-            </div>
-        </div>
-
-        <!-- ======================= Cards ================== -->
-        <div class="cardBox">
-            <div class="card">
-                <p><b>Tahun Pelaksanaan Asesmen</b></p>
-            </div>
-        </div>
-        <!-- ======================= Cards ================== -->
-        <div class="cardBox">
-            <div class="card">
-                <p><b>Status FUK TKP & MP</b></p>
-            </div>
-            <div class="card">
-                <p><b>Histori Data</b></p>
-            </div>
-        </div>
-    </div>
-    </div>
     </div>
 
     <!-- =========== Scripts =========  -->

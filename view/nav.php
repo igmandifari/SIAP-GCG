@@ -12,7 +12,7 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="<?php echo getDashboardURL($userRole); ?>">
                         <span class="icon">
                             <ion-icon name="home-outline"></ion-icon>
                         </span>
@@ -20,7 +20,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="data.php">
                         <span class="icon">
                             <ion-icon name="analytics-outline"></ion-icon>
                         </span>

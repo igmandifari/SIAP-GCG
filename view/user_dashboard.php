@@ -15,6 +15,18 @@ if (isset($_SESSION["role"]) && $_SESSION["role"] == "user") {
     header("Location: ../index.php");
     exit;
 }
+$userRole = $_SESSION["role"];
+function getDashboardURL($userRole)
+{
+    if ($userRole === "admin") {
+        return "admin_dashboard.php";
+    } else if ($userRole === "user") {
+        return "user_dashboard.php";
+    } else {
+        // Default to a generic dashboard if the role is neither "admin" nor "user"
+        return "../index.php";
+    }
+}
 
 ?>
 
