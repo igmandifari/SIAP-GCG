@@ -67,28 +67,24 @@ if (isset($_SESSION["role"]) && $_SESSION["role"] == "admin") {
                     <ion-icon name="notifications"></ion-icon>
                 </div>
             </div>
+            <a href="../config/logout.php" class="btn btn-success">Logout</a>
         </div>
         <!-- ======================= Cards ================== -->
         <div class="cardBox">
             <div class="card">
-                <div class="cardName">
-                    <p>Tahun Pelaksanaan Asesmen</p>
-                </div>
+                <p><b>Tahun Pelaksanaan Asesmen</b></p>
             </div>
         </div>
         <!-- ======================= Cards ================== -->
         <div class="cardBox">
             <div class="card">
-                <div class="cardName">
-                    <p>Status FUK TKP & MR</p>
-                </div>
+                <p><b>Status FUK TKP & MP</b></p>
             </div>
             <div class="card">
-                <div class="cardName">
-                    <p>Histori Data</p>
-                </div>
+                <p><b>Histori Data</b></p>
             </div>
         </div>
+    </div>
     </div>
     </div>
 
