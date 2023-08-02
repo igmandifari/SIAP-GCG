@@ -34,30 +34,55 @@ function getDashboardURL($userRole)
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Data</title>
     <!-- ======= Styles ====== -->
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 
 <body>
+    <?php include 'sidebar.php'; ?>
     <?php include 'nav.php'; ?>
 
-    <!-- ========================= Main ==================== -->
-    <div class="main">
-        <div class="topbar">
-            <div class="toggle">
-                <ion-icon name="menu-outline"></ion-icon>
+    <!-- MAIN -->
+    <main>
+        <h1 class="title">Dashboard</h1>
+        <ul class="breadcrumbs">
+            <li><a href="#">Data</a></li>
+            <li class="divider">/</li>
+        </ul>
+        <div class="data">
+            <div class="content-data">
+                <div class="head">
+                    <h3>Status FUK & MP</h3>
+                    <div>
+                        <li>
+                            <p>Keterangan: </p>
+                        </li>
+                        <div class="status-box">
+                            <div class="status-box-item" style="background-color: green;">
+                            </div>
+                            <div class="status-text">Siap</div>
+                            <div class="status-box-item" style="background-color: yellow;">
+                            </div>
+                            <div class="status-text">Diproses</div>
+                            <div class="status-box-item" style="background-color: blue;">
+                            </div>
+                            <div class="status-text">Diterima</div>
+                            <div class="status-box-item" style="background-color: red;">
+                            </div>
+                            <div class="status-text">Ditolak</div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-
+    </main>
+    <!-- MAIN -->
+    </section>
+    <!-- NAVBAR -->
     <!-- =========== Scripts =========  -->
     <script src="../assets/js/main.js"></script>
-
-    <!-- ====== ionicons ======= -->
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 </body>
 
 </html>

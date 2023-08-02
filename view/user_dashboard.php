@@ -37,73 +37,117 @@ function getDashboardURL($userRole)
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Admin Dashboard</title>
-    <!-- ======= Styles ====== -->
+    <title>User Dashboard</title>
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 
 <body>
+    <?php include 'sidebar.php'; ?>
     <?php include 'nav.php'; ?>
 
-    <!-- ========================= Main ==================== -->
-    <div class="main">
-        <div class="topbar">
-            <div class="toggle">
-                <ion-icon name="menu-outline"></ion-icon>
-            </div>
-        </div>
-
-        <!-- ======================= Cards ================== -->
-        <div class="cardBox">
-            <img src="<?php echo $foto; ?>" alt="foto">
+    <!-- MAIN -->
+    <main>
+        <h1 class="title">Dashboard</h1>
+        <ul class="breadcrumbs">
+            <li><a href="#">Home</a></li>
+            <li class="divider">/</li>
+            <li><a href="#" class="active">Dashboard</a></li>
+        </ul>
+        <div class="info-data">
             <div class="card">
-                <div>
-                    <p>Selamat Datang, </p>
-                    <p><b>Department <?php echo $departemen; ?>, </b></p>
-
-                    <p><?php echo $nama_user; ?></p>
-                    <p><?php echo $ket; ?></p>
+                <div class="head">
+                    <div>
+                        <img src="<?php echo $foto; ?>" alt="foto">
+                    </div>
                 </div>
             </div>
-
             <div class="card">
-                <div>
-                    <p>Anda Memiliki,</p>
-                    <div class="numbers">80</div>
-                    <div class="cardName">Notifikasi</div>
-                </div>
-
-                <div class="iconBx">
-                    <ion-icon name="notifications"></ion-icon>
+                <div class="head">
+                    <div>
+                        <h2>Selamat Datang, </h2>
+                        <p><?php echo $departemen; ?></p>
+                        <h3><?php echo $nama_user; ?></h3>
+                        <p><?php echo $ket; ?></p>
+                    </div>
                 </div>
             </div>
-            <a href="../config/logout.php" class="btn btn-success">Logout</a>
-        </div>
-        <!-- ======================= Cards ================== -->
-        <div class="cardBox">
             <div class="card">
-                <p><b>Tahun Pelaksanaan Asesmen</b></p>
+                <div class="head">
+                    <div>
+                        <h2>465</h2>
+                        <p>Notifikasi</p>
+                    </div>
+                    <i class='bx bx-bell icon'></i>
+                </div>
             </div>
         </div>
-        <!-- ======================= Cards ================== -->
-        <div class="cardBox">
-            <div class="card">
-                <p><b>Status FUK TKP & MP</b></p>
-            </div>
-            <div class="card">
-                <p><b>Histori Data</b></p>
+        <div class="data">
+            <div class="content-data">
+                <div class="card">
+                    <div class="head">
+                        <div>
+                            <h2>Tahun Pelaksanaan Assesmen</h2>
+                        </div>
+                    </div>
+                    <span class="progress" data-value="30%"></span>
+                    <span class="label">30%</span>
+                </div>
             </div>
         </div>
-    </div>
-    </div>
-    </div>
+        <div class="data">
+            <div class="content-data">
+                <div class="head">
+                    <h3>Status FUK & MP</h3>
+                    <div class="menu">
+                        <i class='bx bx-dots-horizontal-rounded icon'></i>
+                        <ul class="menu-link">
+                            <li><a href="#">Edit</a></li>
+                            <li><a href="#">Save</a></li>
+                            <li><a href="#">Remove</a></li>
+                        </ul>
 
+                    </div>
+                </div>
+                <div class="chart">
+                    <div id="chart"></div>
+                </div>
+            </div>
+            <div class="content-data">
+                <div class="head">
+                    <h3>Histori Data</h3>
+                    <div class="menu">
+                        <i class='bx bx-dots-horizontal-rounded icon'></i>
+                        <ul class="menu-link">
+                            <li><a href="#">Edit</a></li>
+                            <li><a href="#">Save</a></li>
+                            <li><a href="#">Remove</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="chat-box">
+                    <p class="day"><span>Today</span></p>
+                    <div class="msg">
+                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cGVvcGxlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="">
+                        <div class="chat">
+                            <div class="profile">
+                                <span class="username">Admin</span>
+                                <span class="datetime">02/08/2023 18:30</span>
+                            </div>
+                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nobis tempora nisi perferendis, suscipit numquam temporibus beatae non, repudiandae ullam placeat porro excepturi animi, quia dicta. Ullam quaerat fugiat reprehenderit unde.</p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </main>
+    <!-- MAIN -->
+    </section>
+    <!-- NAVBAR -->
     <!-- =========== Scripts =========  -->
     <script src="../assets/js/main.js"></script>
-
-    <!-- ====== ionicons ======= -->
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 </body>
 
 </html>

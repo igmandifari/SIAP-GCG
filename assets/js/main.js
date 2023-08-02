@@ -1,112 +1,197 @@
-let list = document.querySelectorAll(".navigation li");
+// SIDEBAR DROPDOWN
+const allDropdown = document.querySelectorAll('#sidebar .side-dropdown');
+const sidebar = document.getElementById('sidebar');
 
-// Function to handle showing/hiding dropdown
-function toggleDropdown() {
-    this.classList.toggle("hovered");
+allDropdown.forEach(item => {
+    const a = item.parentElement.querySelector('a:first-child');
+    a.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        if (!this.classList.contains('active')) {
+            allDropdown.forEach(i => {
+                const aLink = i.parentElement.querySelector('a:first-child');
+
+                aLink.classList.remove('active');
+                i.classList.remove('show');
+            })
+        }
+
+        this.classList.toggle('active');
+        item.classList.toggle('show');
+    })
+})
+
+
+
+
+
+// SIDEBAR COLLAPSE
+const toggleSidebar = document.querySelector('nav .toggle-sidebar');
+const allSideDivider = document.querySelectorAll('#sidebar .divider');
+
+if (sidebar.classList.contains('hide')) {
+    allSideDivider.forEach(item => {
+        item.textContent = '-'
+    })
+    allDropdown.forEach(item => {
+        const a = item.parentElement.querySelector('a:first-child');
+        a.classList.remove('active');
+        item.classList.remove('show');
+    })
+} else {
+    allSideDivider.forEach(item => {
+        item.textContent = item.dataset.text;
+    })
 }
 
-// Event listener to toggle dropdown on click
-list.forEach((item) => {
-    item.addEventListener("click", toggleDropdown);
-});
+toggleSidebar.addEventListener('click', function () {
+    sidebar.classList.toggle('hide');
 
-// Event listener to hide dropdown when mouse leaves the menu item
-list.forEach((item) => {
-    item.addEventListener("mouseleave", function () {
-        this.classList.remove("hovered");
-    });
-});
+    if (sidebar.classList.contains('hide')) {
+        allSideDivider.forEach(item => {
+            item.textContent = '-'
+        })
 
-// Menu Toggle
-let toggle = document.querySelector(".toggle");
-let navigation = document.querySelector(".navigation");
-let main = document.querySelector(".main");
-
-toggle.onclick = function () {
-    navigation.classList.toggle("active");
-    main.classList.toggle("active");
-};
-
-// Get all the dropdown from document
-document.querySelectorAll('.dropdown-toggle').forEach(dropDownFunc);
-
-// Dropdown Open and Close function
-function dropDownFunc(dropDown) {
-    console.log(dropDown.classList.contains('click-dropdown'));
-
-    if (dropDown.classList.contains('click-dropdown') === true) {
-        dropDown.addEventListener('click', function (e) {
-            e.preventDefault();
-
-            if (this.nextElementSibling.classList.contains('dropdown-active') === true) {
-                // Close the clicked dropdown
-                this.parentElement.classList.remove('dropdown-open');
-                this.nextElementSibling.classList.remove('dropdown-active');
-
-            } else {
-                // Close the opend dropdown
-                closeDropdown();
-
-                // add the open and active class(Opening the DropDown)
-                this.parentElement.classList.add('dropdown-open');
-                this.nextElementSibling.classList.add('dropdown-active');
-            }
-        });
+        allDropdown.forEach(item => {
+            const a = item.parentElement.querySelector('a:first-child');
+            a.classList.remove('active');
+            item.classList.remove('show');
+        })
+    } else {
+        allSideDivider.forEach(item => {
+            item.textContent = item.dataset.text;
+        })
     }
+})
 
-    if (dropDown.classList.contains('hover-dropdown') === true) {
 
-        dropDown.onmouseover = dropDown.onmouseout = dropdownHover;
 
-        function dropdownHover(e) {
-            if (e.type == 'mouseover') {
-                // Close the opend dropdown
-                closeDropdown();
 
-                // add the open and active class(Opening the DropDown)
-                this.parentElement.classList.add('dropdown-open');
-                this.nextElementSibling.classList.add('dropdown-active');
+sidebar.addEventListener('mouseleave', function () {
+    if (this.classList.contains('hide')) {
+        allDropdown.forEach(item => {
+            const a = item.parentElement.querySelector('a:first-child');
+            a.classList.remove('active');
+            item.classList.remove('show');
+        })
+        allSideDivider.forEach(item => {
+            item.textContent = '-'
+        })
+    }
+})
 
+
+
+sidebar.addEventListener('mouseenter', function () {
+    if (this.classList.contains('hide')) {
+        allDropdown.forEach(item => {
+            const a = item.parentElement.querySelector('a:first-child');
+            a.classList.remove('active');
+            item.classList.remove('show');
+        })
+        allSideDivider.forEach(item => {
+            item.textContent = item.dataset.text;
+        })
+    }
+})
+
+
+
+
+// PROFILE DROPDOWN
+const profile = document.querySelector('nav .profile');
+const imgProfile = profile.querySelector('img');
+const dropdownProfile = profile.querySelector('.profile-link');
+
+imgProfile.addEventListener('click', function () {
+    dropdownProfile.classList.toggle('show');
+})
+
+
+
+
+// MENU
+const allMenu = document.querySelectorAll('main .content-data .head .menu');
+
+allMenu.forEach(item => {
+    const icon = item.querySelector('.icon');
+    const menuLink = item.querySelector('.menu-link');
+
+    icon.addEventListener('click', function () {
+        menuLink.classList.toggle('show');
+    })
+})
+
+
+
+window.addEventListener('click', function (e) {
+    if (e.target !== imgProfile) {
+        if (e.target !== dropdownProfile) {
+            if (dropdownProfile.classList.contains('show')) {
+                dropdownProfile.classList.remove('show');
             }
-
-            // if(e.type == 'mouseout'){
-            //     // close the dropdown after user leave the list
-            //     e.target.nextElementSibling.onmouseleave = closeDropdown;
-            // }
         }
     }
 
+    allMenu.forEach(item => {
+        const icon = item.querySelector('.icon');
+        const menuLink = item.querySelector('.menu-link');
+
+        if (e.target !== icon) {
+            if (e.target !== menuLink) {
+                if (menuLink.classList.contains('show')) {
+                    menuLink.classList.remove('show')
+                }
+            }
+        }
+    })
+})
+
+
+
+
+
+// PROGRESSBAR
+const allProgress = document.querySelectorAll('main .card .progress');
+
+allProgress.forEach(item => {
+    item.style.setProperty('--value', item.dataset.value)
+})
+
+
+
+
+
+
+// APEXCHART
+var options = {
+    series: [{
+        name: 'series1',
+        data: [31, 40, 28, 51, 42, 109, 100]
+    }, {
+        name: 'series2',
+        data: [11, 32, 45, 32, 34, 52, 41]
+    }],
+    chart: {
+        height: 350,
+        type: 'area'
+    },
+    dataLabels: {
+        enabled: false
+    },
+    stroke: {
+        curve: 'smooth'
+    },
+    xaxis: {
+        type: 'datetime',
+        categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
+    },
+    tooltip: {
+        x: {
+            format: 'dd/MM/yy HH:mm'
+        },
+    },
 };
 
-
-// Listen to the doc click
-window.addEventListener('click', function (e) {
-
-    // Close the menu if click happen outside menu
-    if (e.target.closest('.dropdown-container') === null) {
-        // Close the opend dropdown
-        closeDropdown();
-    }
-
-});
-
-
-// Close the openend Dropdowns
-function closeDropdown() {
-    console.log('run');
-
-    // remove the open and active class from other opened Dropdown (Closing the opend DropDown)
-    document.querySelectorAll('.dropdown-container').forEach(function (container) {
-        container.classList.remove('dropdown-open')
-    });
-
-    document.querySelectorAll('.dropdown-menu').forEach(function (menu) {
-        menu.classList.remove('dropdown-active');
-    });
-}
-
-// close the dropdown on mouse out from the dropdown list
-document.querySelectorAll('.dropdown-menu').forEach(function (dropDownList) {
-    // close the dropdown after user leave the list
-    dropDownList.onmouseleave = closeDropdown;
-});
+var chart = new ApexCharts(document.querySelector("#chart"), options);
+chart.render();
